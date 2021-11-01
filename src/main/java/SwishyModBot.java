@@ -31,14 +31,11 @@ public class SwishyModBot {
 
         twirk.connect();
 
-        //String line;
-        //while( !(line = scanner.nextLine()).matches(".quit") )
         twirk.channelMessage("hello I am an experimental Swishy detection bot");
 
         twirk.whisper("dwengw_50", "hello");
 
         Files.copy(new URL("https://tmi.twitch.tv/group/user/" + channelName + "/chatters").openStream(), Paths.get("./mods.json"));
-
 
         Gson gson = new Gson();
 
@@ -60,53 +57,12 @@ public class SwishyModBot {
 
         System.out.println("\nTo exit this example, type .quit and press Enter\n");
 
-
-
-        	//Connect to Twitch
-
-
-
-
         twirk.channelMessage("These are the mods: " + bools.toString());
 
 
         Thread.sleep(300000);
 
         Map<Long, List<UserMessageEvent>> curUsers = swish.getAllMessages();
-        /*StringBuilder sb;
-        for(List<UserMessageEvent> messages : curUsers.values()){
-            double curFloat = 0;
-            //if(messages.size() >= 3){
-                for(UserMessageEvent i : messages){
-                    curFloat += i.getSentiment();
-                }
-                sb = new StringBuilder("");
-                sb.append("User: ").append("@").append(messages.get(0).getDisplayName()).append("    ");
-                if(curFloat / messages.size() <= -0.25){
-                    for(String s : bools) sb.append(s).append(" ");
-                }
-
-                sb.append("Overall Sentiment:    ").append(new DecimalFormat("#.##").format(curFloat/messages.size()));
-                sb.append("Negative Messages:    ");
-
-                //for(UserMessageEvent i : messages){
-                 //   sb.append(i.getMessage()).append("     ");
-                //}
-
-                twirk.channelMessage(sb.toString());
-            //}
-            */
-
-
-        /*Collection<List<UserMessageEvent>> bob = curUsers.values();
-        for(List<UserMessageEvent> i : bob){
-            for(UserMessageEvent babubhatt : i ){
-                twirk.channelMessage("Message: " + babubhatt.getMessage() + "Sentiment: " + babubhatt.getSentiment() + " Display Name: "
-                         + babubhatt.getDisplayName());
-            }
-        }*/
-
-
         scanner.close();	//Close the scanner
         twirk.close();		//Close the connection to Twitch, and release all resources
     }
