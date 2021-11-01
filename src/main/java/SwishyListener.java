@@ -18,10 +18,10 @@ public class SwishyListener implements TwirkListener {
 
     private Map<Long, List<UserMessageEvent>> allMessages = new HashMap<>();
     Twirk t;
-    List<String> boolers;
-    public SwishyListener(Twirk t, List<String> boolers){
+    List<String> list;
+    public SwishyListener(Twirk t, List<String> list){
         this.t = t;
-        this.boolers = boolers;
+        this.list = list;
     }
 
     public void onPrivMsg(TwitchUser sender, TwitchMessage message){
@@ -45,7 +45,7 @@ public class SwishyListener implements TwirkListener {
                 curUserMessages.add(new UserMessageEvent(sender.getDisplayName(), totalSent, message.getContent()));
                 if(curUserMessages.size() == 4){
                     StringBuilder sb = new StringBuilder("");
-                    for(String s : boolers){
+                    for(String s : list){
                         sb.append("@").append(s).append("  ");
                     }
                     sb.append("High Toxicity Alert.  ");
